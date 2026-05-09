@@ -24,10 +24,9 @@
 <main class="page">
   <section class="card">
     <header class="top">
-      <div>
-        <h1>Expense Splitter</h1>
-        <p>Wähle eine Gruppe aus oder erstelle eine neue.</p>
-      </div>
+      <a href="/" class="back-button">←</a>
+
+      <h1>Gruppen</h1>
 
       <a href="/profile" class="profile-link">
         <div class="profile-human">
@@ -46,7 +45,7 @@
           <div class="group-info">
             <h2>{group.name}</h2>
             <p>{group.members} Mitglieder</p>
-            <span>Gesamtausgaben: CHF {group.total.toFixed(2)}</span>
+            <span>CHF {group.total.toFixed(2)}</span>
           </div>
 
           <strong>›</strong>
@@ -54,9 +53,7 @@
       {/each}
     </section>
 
-    <a href="/groups/add" class="create-button">
-      Neue Gruppe erstellen
-    </a>
+    <a href="/groups/add" class="create-button">Neue Gruppe erstellen</a>
   </section>
 </main>
 
@@ -89,22 +86,22 @@
 
   .top {
     display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    margin-bottom: 28px;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  .back-button {
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 28px;
   }
 
   h1 {
+    flex: 1;
     margin: 0;
     font-size: 30px;
     font-weight: 800;
-  }
-
-  .top p {
-    margin: 8px 0 0 0;
-    color: #6b7280;
-    font-size: 15px;
-    line-height: 1.4;
   }
 
   .profile-link {
@@ -118,7 +115,7 @@
     width: 42px;
     height: 42px;
     position: relative;
-    margin: 0 auto 4px auto;
+    margin: 0 auto 4px;
   }
 
   .human-head {
@@ -173,12 +170,9 @@
   .group-info p {
     margin: 4px 0;
     color: #4b5563;
-    font-size: 13px;
   }
 
   .group-info span {
-    color: #374151;
-    font-size: 13px;
     font-weight: bold;
   }
 
