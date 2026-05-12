@@ -11,6 +11,10 @@
 	function formatDate(date) {
 		if (!date) return '';
 
+		if (date.includes(',')) {
+			return date;
+		}
+
 		const parsedDate = new Date(date);
 
 		if (Number.isNaN(parsedDate.getTime())) {
@@ -44,13 +48,13 @@
 		</header>
 
 		<section class="total-card">
-			<p>Total Expenses</p>
+			<p>Gesamtausgaben</p>
 			<h2>CHF {total.toFixed(2)}</h2>
 		</section>
 
 		<section class="settlement-card">
 			<div>
-				<p>Settlement</p>
+				<p>Ausgleich</p>
 
 				{#if settlements.length === 0}
 					<strong>Alles ist ausgeglichen.</strong>

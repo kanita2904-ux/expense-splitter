@@ -1,23 +1,12 @@
 <script>
-  const groups = [
-    {
-      name: 'Barcelona Trip',
-      members: 4,
-      href: '/groups/barcelona-trip'
-    },
-    {
-      name: 'WG Zürich',
-      members: 3,
-      href: '/groups/wg-zuerich'
-    },
-    {
-      name: 'Freunde',
-      members: 5,
-      href: '/groups/freunde'
-    }
-  ];
-</script>
+	// @ts-nocheck
 
+	let { data } = $props();
+
+	let profileName = $derived(data.profileName);
+	let groups = $derived(data.groups);
+	let groupCount = $derived(data.groupCount);
+</script>
 <main class="page">
   <section class="card">
     <header class="top">
@@ -38,8 +27,8 @@
       </div>
 
       <div>
-        <h2>Alex</h2>
-        <p>Aktives Mitglied in 3 Gruppen</p>
+        <h2>{profileName}</h2>
+<p>Aktives Mitglied in {groupCount} Gruppen</p>
       </div>
     </section>
 
