@@ -1,105 +1,83 @@
 <script>
-  let amount = '';
-  let paidBy = '';
-  let description = '';
+	// @ts-nocheck
+
+	let { data, form } = $props();
+
+	let group = $derived(data.group);
+
+	let amount = $state('');
+	let paidBy = $state('');
+	let description = $state('');
+	let date = $state(new Date().toISOString().slice(0, 10));
 </script>
 
 <main class="page">
-  <section class="card">
-    <header class="top">
-      <a href="/" class="back">←</a>
+	<section class="card">
+		<header class="top">
+			<a href={`/groups/${group.slug}`} class="back" aria-label="Zurück">←</a>
 
-      <h1>Ausgabe hinzufügen</h1>
+			<div>
+				<h1>Ausgabe hinzufügen</h1>
+				<p class="subtitle">{group.name}</p>
+			</div>
 
-      <a href="/profile" class="profile-link">
-        <div class="profile-human">
-          <div class="human-head"></div>
-          <div class="human-body"></div>
-        </div>
-      </a>
-    </header>
+			<a href="/profile" class="profile-link" aria-label="Profil öffnen">
+				<div class="profile-human">
+					<div class="human-head"></div>
+					<div class="human-body"></div>
+				</div>
+			</a>
+		</header>
 
-    <form class="form">
-      <div class="field">
-        <label>Betrag</label>
+		<form class="form" method="POST">
+			<input type="hidden" name="groupSlug" value={group.slug} />
 
-        <input
-          bind:value={amount}
-          placeholder="CHF 0.00"
-          class="input-field"
-        />
-      </div>
+			{#if form?.message}
+				<p class="error-message">{form.message}</p>
+			{/if}
 
-      <div class="field">
-        <label>Bezahlt von</label>
+			<div>
+				<label for="amount">Betrag</label>
+				<input
+					id="amount"
+					name="amount"
+					bind:value={amount}
+					placeholder="CHF 0.00"
+					type="number"
+					step="0.05"
+					required
+				/>
+			</div>
 
-        <select
-          bind:value={paidBy}
-          class="select-field"
-        >
-          <option value="">Person auswählen</option>
-          <option>Niwes</option>
-          <option>Laura</option>
-          <option>Marco</option>
-          <option>Sofia</option>
-        </select>
-      </div>
+			<div>
+				<label for="paidBy">Bezahlt von</label>
 
-      <div class="field">
-        <label>Beschreibung</label>
+				<select id="paidBy" name="paidBy" bind:value={paidBy} required>
+					<option value="">Person auswählen</option>
 
-        <input
-          bind:value={description}
-          placeholder="z.B. Tapas-Abendessen"
-          class="input-field"
-        />
-      </div>
+					{#each group.members as member}
+						<option value={member}>{member}</option>
+					{/each}
+				</select>
+			</div>
 
-      <button
-        type="submit"
-        class="primary-button save-button"
-      >
-        Speichern
-      </button>
-    </form>
-  </section>
+			<div>
+				<label for="description">Beschreibung</label>
+				<input
+					id="description"
+					name="description"
+					bind:value={description}
+					placeholder="z.B. Tapas-Abendessen"
+					required
+				/>
+			</div>
+
+			<div>
+				<label for="date">Datum</label>
+				<input id="date" name="date" bind:value={date} type="date" required />
+			</div>
+
+			<button type="submit" class="save-button">Speichern</button>
+		</form>
+	</section>
 </main>
-
-<style>
-  .top {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 42px;
-  }
-
-  .back {
-    text-decoration: none;
-    font-size: 28px;
-    color: #111827;
-  }
-
-  h1 {
-    flex: 1;
-    font-size: 28px;
-    margin: 0;
-    font-weight: 800;
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-  }
-
-  label {
-    display: block;
-    font-weight: 800;
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-
-  .save-button {
-    margin-top: 120px;
-  }
-</style>
