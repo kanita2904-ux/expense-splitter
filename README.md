@@ -1,42 +1,39 @@
-# sv
+# Expense Splitter
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A modern expense sharing web application built with SvelteKit and MongoDB Atlas.
 
-## Creating a project
+Users can create groups, add shared expenses, calculate settlements and manage all expenses in a clean mobile-friendly interface.
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Features
 
-To recreate this project with the same configuration:
+- Create and delete groups
+- Add shared expenses
+- Edit expenses
+- Delete expenses
+- Automatic settlement calculation
+- Mobile responsive UI
+- MongoDB Atlas integration
+- Netlify deployment
+- Modern SvelteKit structure
 
-```sh
-# recreate this project
-npx sv@0.15.1 create --template minimal --types ts --install npm expense-splitter
-```
+---
 
-## Developing
+## Tech Stack
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- SvelteKit
+- MongoDB Atlas
+- MongoDB Compass
+- Netlify
+- CSS
+- GitHub
 
-```sh
-npm run dev
+---
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Local Development
 
-## Building
+Install dependencies:
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+npm install

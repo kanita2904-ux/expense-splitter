@@ -38,7 +38,7 @@
       </div>
 
       <div>
-        <h2>Niwes</h2>
+        <h2>Alex</h2>
         <p>Aktives Mitglied in 3 Gruppen</p>
       </div>
     </section>
